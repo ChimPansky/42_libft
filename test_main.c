@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 		//const char *teststr;
-		printf("ft_strrchr: %s\n", ft_strrchr("xxxabcxxx", 'x'));
-		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "Xxy"));
+		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
+		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
 		printf("ft_strjoin: %s\n", ft_strjoin("daklfn", " X"));
 		printf("substr: %s\n", ft_substr("abcdefghij", 7, 5));
 		char dest[10] = "abc";

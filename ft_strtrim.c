@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/08 17:28:29 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/08 18:09:01 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 		left++;
 		str1++;
 	}
-	str1 = (char *)s1;
-	printf("ft_strrchr in trim: %s\n", strrchr(set, *str1));
-	while (strrchr(set, *str1))
+	str1 = (char *)(s1 + ft_strlen(s1) - 1);
+	while (ft_strrchr(set, *str1)) // PROBLEM WITH RETURNED INDEX
 	{
 		right++;
 		str1--;
 	}
 	len = ft_strlen(s1) - left - right;
-	printf("left: %lu\n", left);
-	printf("right: %lu\n", right);
-	printf("len: %lu\n", len);
 	result = (char *)ft_calloc(sizeof(char), len + 1);
 	if (!result)
 		return (NULL);
