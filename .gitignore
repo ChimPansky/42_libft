@@ -1,0 +1,8 @@
+.vscode
+*.pdf
+*.ods
+*.out
+*.o
+*.ods#
+*.txt
+*.png
