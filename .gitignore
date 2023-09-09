@@ -6,3 +6,5 @@
 *.ods#
 *.txt
 *.png
+*.so
+*.a

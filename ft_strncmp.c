@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/09 18:08:36 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/09 20:01:12 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*str;
-	size_t	len;
+	size_t	i;
+	int	cmp;
 
-	str = (char *)s;
-	len = ft_strlen(str);
-	str += len;
-	if (*str == c)
-		return (str);
-	while (len--)
+	i = 0;
+	cmp = 0;
+	while ((s1[i] || s2[i]) && !cmp && i < n)
 	{
-		str--;
-		if (*str == c)
-			return (str);
+		cmp = s1[i] - s2[i];
+		i++;
 	}
-	return (NULL);
+	return (cmp);
 }

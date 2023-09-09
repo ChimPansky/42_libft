@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
+/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/08 18:09:01 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/09 15:48:00 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,17 @@ char	*ft_strtrim(char const *s1, char const *set)
 		left++;
 		str1++;
 	}
-	str1 = (char *)(s1 + ft_strlen(s1) - 1);
-	while (ft_strrchr(set, *str1)) // PROBLEM WITH RETURNED INDEX
+	str1 = (char *)(s1 + ft_strlen(s1) - 1);	
+	while (ft_strrchr(set, *str1)) 
 	{
 		right++;
 		str1--;
 	}
-	len = ft_strlen(s1) - left - right;
+	len = ft_strlen(s1);
+	if (left > len || right > len)
+		len = 0;
+	else
+		len = len - left - right;
 	result = (char *)ft_calloc(sizeof(char), len + 1);
 	if (!result)
 		return (NULL);

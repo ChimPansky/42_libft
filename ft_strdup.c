@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
+/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/08 11:56:42 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/09 20:04:10 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ char	*ft_strdup(const char *s)
 	result = (char *)ft_calloc(sizeof(char), slen + 1);
 	if (!result)
 		return (NULL);
-	ft_strlcpy(result, s, slen);
+	ft_strlcpy(result, s, slen + 1);
 	return (result);
 }

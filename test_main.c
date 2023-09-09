@@ -17,6 +17,12 @@ int	main(int argc, char **argv)
 	else
 	{
 		(void)argv;
+
+		printf("ft_strrchr: %s\n", ft_strrchr(" ", '\0'));
+		printf("strrchr   : %s\n", strrchr(" ", '\0'));
+		
+		printf("ft_strtrim: %s\n", ft_strtrim("xXXaaa","xXa"));
+		/*
 		//const char *teststr;
 		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
 		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
@@ -26,7 +32,7 @@ int	main(int argc, char **argv)
 		ft_strlcat(dest,"def",10);
 		printf("ft_strlcat: %s\n", dest);
 
-/*
+
 		printf("ft_strdup: %s\n", ft_strdup(""));
 		printf("strdup   : %s\n", strdup(""));
 
