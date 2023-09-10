@@ -18,8 +18,14 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 
+		void *ptr1;
+		void *ptr2;
+		ptr1 = malloc(0);
+		ptr2 = malloc(0);
 		printf("begin testing\n");
-		
+		memcpy(ptr1, ptr2, 1);
+		ft_memcpy(ptr1, ptr2, 1);
+/*
 		char *str = "the cake is a lie !I'm hidden lol\r\n";
 
 		char buff1[50] = "there is no stars in the sky";
@@ -31,12 +37,12 @@ int	main(int argc, char **argv)
 
 		printf("buff1: %s\n", buff1);
 //		printf("buff2: %s\n", buff2);
-/*
+
 		printf("ft_strrchr: %s\n", ft_strrchr(" ", '\0'));
 		printf("strrchr   : %s\n", strrchr(" ", '\0'));
-		
+
 		printf("ft_strtrim: %s\n", ft_strtrim("xXXaaa","xXa"));
-		
+
 		//const char *teststr;
 		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
 		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
