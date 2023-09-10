@@ -6,7 +6,7 @@
 /*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/09 20:02:34 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/10 08:39:27 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		*(dst + i) = *(src + i);
 		i++;
 	}
-	*(dst + i) = '\0';
+	if (size)
+		*(dst + i) = '\0';
 	return (ft_strlen(src));
 }

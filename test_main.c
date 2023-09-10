@@ -18,11 +18,25 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 
+		printf("begin testing\n");
+		
+		char *str = "the cake is a lie !I'm hidden lol\r\n";
+
+		char buff1[50] = "there is no stars in the sky";
+//		char buff2[50] = "there is no stars in the sky";
+		size_t max = strlen("the cake is a lie !I'm hidden lol\r\n") + 4;
+
+		strlcat(buff1, str, max);
+//		ft_strlcat(buff2, str, max);
+
+		printf("buff1: %s\n", buff1);
+//		printf("buff2: %s\n", buff2);
+/*
 		printf("ft_strrchr: %s\n", ft_strrchr(" ", '\0'));
 		printf("strrchr   : %s\n", strrchr(" ", '\0'));
 		
 		printf("ft_strtrim: %s\n", ft_strtrim("xXXaaa","xXa"));
-		/*
+		
 		//const char *teststr;
 		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
 		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
