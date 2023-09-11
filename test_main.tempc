@@ -6,44 +6,66 @@
 #include <stddef.h>
 #include <bsd/string.h>
 
+char	ft_rotx(unsigned int x, char c)
+{
+	return (c + x);
+}
+
+int	addition(int a, int b)
+{
+	return (a + b);
+}
+int subtraction(int a, int b)
+{
+	return (a - b);
+}
+
+int calculate(int (*operation)(int, int), int x, int y)
+{
+	return (operation(x, y));
+}
+
+char	*strfunc(char *(*funcname)(char *, const char *, size_t), char *s1, const char *s2, size_t size)
+{
+	return (funcname(s1, s2, size));
+}
 
 int	main(int argc, char **argv)
 {
-	if (argc > 1)
+	printf("begin testing\n");
+	if (argc == 3)
 	{
-		//printf("strlen: %lu\n",strlen(argv[1]));
-		//printf("ft_strlen: %lu\n",ft_strlen(argv[1]));
+		char **my_split;
+		int	i;
+
+		my_split = ft_split(argv[1], *argv[2]);
+		if (my_split)
+		{
+			printf("sizeof(ft_split(%s, %c)): %ld\n", argv[1], *argv[2], sizeof(my_split));
+			i = -1;
+			while(my_split[++i])
+			{
+				printf("my_split[%d]: %s\n", i, my_split[i]);
+				free(my_split[i]);
+			}
+			free(my_split);
+		}
+		//printf("ft_count_words(%s, %s): %d\n", argv[1], argv[2], ft_count_words(argv[1], argv[2]));
+		//printf("ft_in_str(%s, %c): %d\n", argv[1], argv[2][0], ft_in_str(argv[1], argv[2][0]));
 	}
 	else
 	{
 		(void)argv;
+		char const str = "abcdef";
 
-		void *ptr1;
-		void *ptr2;
-		ptr1 = malloc(0);
-		ptr2 = malloc(0);
-		printf("begin testing\n");
-		memcpy(ptr1, ptr2, 1);
-		ft_memcpy(ptr1, ptr2, 1);
-/*
-		char *str = "the cake is a lie !I'm hidden lol\r\n";
-
-		char buff1[50] = "there is no stars in the sky";
-//		char buff2[50] = "there is no stars in the sky";
-		size_t max = strlen("the cake is a lie !I'm hidden lol\r\n") + 4;
-
-		strlcat(buff1, str, max);
-//		ft_strlcat(buff2, str, max);
-
-		printf("buff1: %s\n", buff1);
-//		printf("buff2: %s\n", buff2);
-
-		printf("ft_strrchr: %s\n", ft_strrchr(" ", '\0'));
-		printf("strrchr   : %s\n", strrchr(" ", '\0'));
-
-		printf("ft_strtrim: %s\n", ft_strtrim("xXXaaa","xXa"));
+		printf("ft_strmapi: %s\n", ft_strmapi(str, ft_rotx, 1, ))
+		printf("calc: %d\n", calculate(subtraction, 5, 7));
+		char	buff1[20];
+		printf("strfunc: \n", );
+		strfunc(ft_strlcpy, buff1, "abcdefghij", 5);
 
 		//const char *teststr;
+		/*
 		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
 		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
 		printf("ft_strjoin: %s\n", ft_strjoin("daklfn", " X"));

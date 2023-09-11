@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/11 11:46:25 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/11 18:12:46 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	int		neg;
+	size_t	i;
 	size_t	len;
-	long	nb;
+	char	*result;
 
-	neg = 0;
-	nb = (long)n;
-	len = ft_get_int_order(n);
-	if (nb < 0)
-		neg = 1;
-	str = ft_calloc(sizeof(char), len + neg);
-	if (!str)
+	len = ft_strlen(s);
+	result = ft_calloc(sizeof(char), len + 1);
+	if (!result)
 		return (NULL);
-	if (neg)
+	i = 0;
+	while (s[i])
 	{
-		str[0] = '-';
-		nb *= -1;
+		result[i] = f(i, s[i]);
+		i++;
 	}
-	while (len--)
-	{
-		str[len + neg] = '0' + (nb % 10);
-		nb /= 10;
-	}
-	return (str);
+	return (result);
 }

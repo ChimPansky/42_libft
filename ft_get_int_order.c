@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_get_int_order.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/11 11:46:25 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:30:40 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+size_t	ft_get_int_order(int nb)
 {
-	char	*str;
-	int		neg;
-	size_t	len;
-	long	nb;
+	size_t	ord;
 
-	neg = 0;
-	nb = (long)n;
-	len = ft_get_int_order(n);
-	if (nb < 0)
-		neg = 1;
-	str = ft_calloc(sizeof(char), len + neg);
-	if (!str)
-		return (NULL);
-	if (neg)
+	ord = 1;
+	while (nb / 10 != 0)
 	{
-		str[0] = '-';
-		nb *= -1;
-	}
-	while (len--)
-	{
-		str[len + neg] = '0' + (nb % 10);
+		ord++;
 		nb /= 10;
 	}
-	return (str);
+	return (ord);
 }

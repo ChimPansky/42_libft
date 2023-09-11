@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/09 20:50:32 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/11 18:08:36 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <string.h>		// REMOVE THIS
 # include <stdio.h>		// REMOVE THIS
 
+char	ft_rotx(unsigned int x, char c); // REMOVE THIS
+
 // Mandatory Part I - Libc Functions
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -29,8 +31,9 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 int		ft_isspace(char c); // helper function
-
 size_t	ft_strlen(const char	*s);	// helper function
+size_t	ft_get_int_order(int nb);	// helper function
+
 void	*ft_memset(void	*s, int c, size_t n);
 
 void	ft_bzero(void	*s, size_t n);
@@ -44,7 +47,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 
-int     ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memrchr(const void *s, int c, size_t n);
@@ -57,7 +60,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 
 char	*ft_strdup(const char *s);
 
-char *ft_itoa(int n);
+char	*ft_itoa(int n);
 
 // Mandatory Part II - Additional Functions:
 char	*ft_substr(char const *s, unsigned int start, size_t len);

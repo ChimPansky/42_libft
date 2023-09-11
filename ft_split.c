@@ -6,25 +6,30 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/08 18:07:44 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/11 16:46:25 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+#include <stdio.h>
 
-int	ft_count_words(char *str, char sep)
+char	**ft_split(char const *s, char c);
+int		ft_create_words(char **res, char *str, int wordc, char sep);
+char	**ft_free_result(char **res, int count);
+size_t	ft_count_words(char *str, char sep);
+
+
+size_t	ft_count_words(char *str, char sep)
 {
-	int	count;
-	int	i;
-	int	start;
+	size_t	count;
+	int		start;
 
-	i = -1;
 	count = 0;
 	start = 1;
-	while (str[++i])
+	while (*str)
 	{
-		if (str[i] == sep)
+		if (*str == sep)
 			start = 1;
 		else
 		{
@@ -32,67 +37,68 @@ int	ft_count_words(char *str, char sep)
 				count++;
 			start = 0;
 		}
+		str++;
 	}
 	return (count);
 }
 
-char	*ft_create_word(char *str, char sep, int index)
+char	**ft_free_result(char **res, int count)
 {
-	int	i;
-	int	len;
-	char *word;
-
-	i = index;
-	len = 0;
-	while (str[i] && str[i] != sep)
+	while (count > 0)
 	{
-		len++;
-		i++;
+		if (res[--count])
+			free(res[count]);
 	}
-	if (!(word = (char *)malloc(sizeof(char) * (len + 1))))
-		return (0);
-	i = -1;
-	while (++i < len)
-		word[i] = str[index + i];
-	word[i] = '\0';
-	return (word);
+	free(res);
+	return (NULL);
+}
+
+int	ft_create_words(char **res, char *str, int wordc, char sep)
+{
+	int		i;
+	size_t	wlen;
+
+	i = 0;
+	wlen = 0;
+	while (i < wordc)
+	{
+		wlen = 0;
+		while (*str == sep)
+			str++;
+		while (*str && *str != sep)
+		{
+			wlen++;
+			str++;
+		}
+		res[i] = (char *)ft_calloc(sizeof(char), wlen + 1);
+		if (!res[i])
+		{
+			ft_free_result(res, i);
+			return (0);
+		}
+		ft_strlcpy(res[i++], (str - wlen), wlen + 1);
+	}
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char **result;
 	char	*str;
-	int		words;
-	int		i;
-	int		j;
+	size_t	wordc;
+	char	**result;
 
 	str = (char *) s;
-	words = ft_count_words(str, c);
-	if (!(result = (char **)malloc(sizeof(char *) * (words + 1))))
-		return (0);
-	i = -1;
-	j = 0;
-	while(++i < words)
-	{
-		while(str[i] == c)
-			j++;
-		if (!((result[i] = ft_create_word(str, c, j))))
-		{
-			while (i > 0)
-			{
-				if (result[--i])
-					free(result[i]);
-			}
-			free(result);
-			return (0);
-		}
-		j += ft_strlen(result[i]);
-	}
-	result[i] = 0;
+	wordc = ft_count_words(str, c);
+	result = (char **)ft_calloc(sizeof(char *), wordc + 1);
+	if (!result)
+		return (NULL);
+	if (!ft_create_words(result, str, wordc, c))
+		return (NULL);
+	result[wordc] = NULL;
 	return (result);
 }
 /*
-#include <stdio.h>
+
 int	main(int argc, char *argv[])
 {
 	if (argc == 3)
@@ -100,12 +106,10 @@ int	main(int argc, char *argv[])
 		char **my_split;
 		int	i;
 
-		my_split = ft_split(argv[1], argv[2]);
-
-
+		my_split = ft_split(argv[1], *argv[2]);
 		if (my_split)
 		{
-			printf("sizeof(ft_split(%s, %s)): %ld\n", argv[1], argv[2], sizeof(my_split));
+			printf("sizeof(ft_split(%s, %c)): %ld\n", argv[1], *argv[2], sizeof(my_split));
 			i = -1;
 			while(my_split[++i])
 			{
@@ -119,7 +123,7 @@ int	main(int argc, char *argv[])
 	}
 	else
 	{
-		printf("Please enter arguments for ft_split(char *str, char *charset):\n");
+		printf("Please enter arguments for ft_split(const char *str, char c):\n");
 	}
 	return (0);
 }
