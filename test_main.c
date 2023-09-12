@@ -56,6 +56,13 @@ int	main(int argc, char **argv)
 	else
 	{
 		(void)argv;
+
+		t_list	*my_list;
+		int	a = 5;
+		my_list = ft_lstnew(&a);
+
+		printf("my_list->content: %d\n", *my_list->content);
+		/*
 		char const str = "abcdef";
 
 		printf("ft_strmapi: %s\n", ft_strmapi(str, ft_rotx, 1, ))
@@ -65,7 +72,7 @@ int	main(int argc, char **argv)
 		strfunc(ft_strlcpy, buff1, "abcdefghij", 5);
 
 		//const char *teststr;
-		/*
+
 		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
 		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
 		printf("ft_strjoin: %s\n", ft_strjoin("daklfn", " X"));
