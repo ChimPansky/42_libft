@@ -57,11 +57,24 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 
-		t_list	*my_list;
-		int	a = 5;
-		my_list = ft_lstnew(&a);
+		t_list	*my_node1;
+		t_list	*my_node2;
+		t_list	**my_list;
 
-		printf("my_list->content: %d\n", *my_list->content);
+		int	a = 5;
+		int	b = 6;
+		my_node1 = ft_lstnew(&a);
+		my_node2 = ft_lstnew(&b);
+		my_list = malloc(sizeof(t_list **)*10);
+		*my_list = my_node1;
+
+		printf("my_node1->content: %d\n", *(int *)my_node1->content);
+		printf("*my_list->content: %d\n", *(int *)(*my_list)->content);
+		ft_lstadd_front(my_list, my_node2);
+		*my_list = my_node2;
+		printf("*my_list->content: %d\n", *(int *)(*my_list)->content);
+		printf("ft_lstsize: %d\n", ft_lstsize(*my_list));
+		printf("ft_lstlast.content: %d\n", *(int *)ft_lstlast(*my_list)->content);
 		/*
 		char const str = "abcdef";
 
