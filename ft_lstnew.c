@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
+/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/12 13:54:04 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:44:03 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*new_list;
+	t_list	*new_node;
 
-	new_list = (t_list *)ft_calloc(sizeof(t_list*), 1);
-	if (!new_list)
+	new_node = (t_list *)ft_calloc(sizeof(t_list*), 1);
+	if (!new_node)
 		return (NULL);
-	new_list->content = content;
-	new_list->next = NULL;
+	new_node->content = content;
+	new_node->next = NULL;
 
-	return (new_list);
+	return (new_node);
 }

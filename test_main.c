@@ -30,6 +30,28 @@ char	*strfunc(char *(*funcname)(char *, const char *, size_t), char *s1, const c
 	return (funcname(s1, s2, size));
 }
 
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
+{
+	char *const			dest = dst;
+	const char *const	source = src;
+	size_t				start;
+
+	start = 0;
+	while (start < n)
+	{
+		*(dest + start) = *(source + start);
+		if (*(dest + start) == c)
+		{
+			start = n;
+		}
+		else
+		{
+			start++;
+		}
+	}
+	return (dst);
+}
+
 int	main(int argc, char **argv)
 {
 	printf("begin testing\n");
@@ -57,10 +79,55 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 
+		char	buff1[20];
+		char	buff2[20];
+		char	*src = "abcdef";
+
+		printf("memcpy   : %s\n", (char *)(memccpy((void*)buff1, src, '\0', 10)));
+		printf("ft_memcpy: %s\n", (char *)(ft_memccpy((void*)buff2, src, '\0', 10)));
+		printf("buff1: %s\n", buff1);
+		printf("buff2: %s\n", buff2);
+
+
+		int	a = 1;
+		int	b = 2;
+		int	c = 3;
+		char	*d = "abc";
+
+		t_list	*node1;
+		t_list	*node2;
+		t_list	*node3;
+		t_list	*node4;
+
+		node1 = ft_lstnew((void*)&a);
+		node2 = ft_lstnew((void*)&b);
+		node3 = ft_lstnew((void*)&c);
+		node4 = ft_lstnew((void*)&d);
+		node1->next = node2;
+		node2->next = node3;
+
+
+		t_list	*new_list = NULL;
+		//t_list	**new_list = malloc(sizeof(t_list **));
+		ft_lstadd_front(&new_list, node1);
+
+		printf("new_list->content: %d\n", *(int *)(new_list->content));
+		printf("new_list->next->content: %d\n", *(int *)(new_list->next->content));
+		printf("new_list->next->next->content: %d\n", *(int *)(new_list->next->next->content));
+
+		printf("ft_lstsize: %d\n", ft_lstsize(new_list));
+		t_list	*lastnode;
+		lastnode = ft_lstlast(new_list);
+		printf("lastnode->content: %p\n", &lastnode->content);
+		ft_lstadd_back(&new_list, node4);
+		printf("ft_lstsize: %d\n", ft_lstsize(new_list));
+		printf("lastnode->content: %p\n", &(ft_lstlast(new_list)->content));
+		
+		/*
 		printf("ft_itoa: %s\n", ft_itoa(5));
 		printf("ft_itoa: %s\n", ft_itoa(-623));
 		printf("ft_strncmp: %d\n", ft_strncmp(ft_itoa(-623), "-623", 10));
-		/*
+		
 		printf("strnstr with void: %s\n",strnstr((void *)0, "fake", 3));
 		printf("ft_strnstr with void: %s\n",ft_strnstr((void *)0, "fake", 3));
 		const char	*str1 = "";
