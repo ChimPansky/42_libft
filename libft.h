@@ -6,7 +6,7 @@
 /*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/09 20:50:32 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/12 08:07:23 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <ctype.h>		// REMOVE THIS
 # include <string.h>		// REMOVE THIS
 # include <stdio.h>		// REMOVE THIS
+
+typedef struct *slist{
+    void            *content;
+    struct slist    *next;
+}                   t_list;
 
 // Mandatory Part I - Libc Functions
 int		ft_isalpha(int c);

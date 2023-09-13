@@ -18,6 +18,7 @@ $(NAME): $(OBJ) $(HEADER)
 
 all: $(NAME)
 
+# remove the next target before evaluations...
 so:
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
 	gcc -nostartfiles -shared -o libft.so $(OBJ)
