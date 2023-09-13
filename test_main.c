@@ -57,6 +57,79 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 
+		printf("ft_itoa: %s\n", ft_itoa(5));
+		printf("ft_itoa: %s\n", ft_itoa(-623));
+		printf("ft_strncmp: %d\n", ft_strncmp(ft_itoa(-623), "-623", 10));
+		/*
+		printf("strnstr with void: %s\n",strnstr((void *)0, "fake", 3));
+		printf("ft_strnstr with void: %s\n",ft_strnstr((void *)0, "fake", 3));
+		const char	*str1 = "";
+		const char	*str2 = NULL;
+		printf("first: %s\n", ft_strjoin("abcdefghijklmn", "xxxxxxxxxxxxxxxxxxxxxx"));
+		char *s1 = "my favorite animal is";
+		char *s2 = " ";
+		char *s3 = "the nyancat";
+		char *tmp = ft_strjoin(s1, s2);
+		char *res = ft_strjoin(tmp, s3);
+		printf("ft_strjoin: %s\n", ft_strjoin((const char *)buff1, (const char *)buff2));
+		printf("tmp: %s\n", tmp);
+		printf("res: %s\n", res);
+		
+		char	*src = "the cake is a lie !\0I'm hidden lol\r\n";
+		char	dest[200];
+		char	ft_dest[200];
+		printf("strlen ft_dest: %lu\n", strlen(ft_dest));
+		printf("ft_strlen ft_dest: %lu\n", ft_strlen(ft_dest));
+		
+		size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
+		printf("max: %lu\n", max);
+		printf("return of strlcat: %lu\n", strlcat(dest, src, max));
+		printf("dest    : %s\n\n", dest);
+		printf("return of ft_strlcat: %lu\n", ft_strlcat(ft_dest, src, max));
+		printf("ft_ dest: %s\n\n", ft_dest);
+		
+		printf("\n\n");
+
+		char *src2 = "aaa";
+		char dst1[20];
+		char dst2[20];
+		int ret1;
+		int ret2;
+
+		memset(dst1, 'B', sizeof(dst1));
+		memset(dst2, 'B', sizeof(dst2));
+		strlcat(dst1, src2, 20);
+		printf("dst1: %s\n", dst1);
+		strlcat(dst1, src2, 20);
+		printf("dst1: %s\n", dst1);
+		ret1 = strlcat(dst1, src2, 20);
+		printf("dst1: %s\n", dst1);
+		printf("ret1: %d\n\n", ret1);
+		(void)ret2;
+		ft_strlcat(dst2, src2, 20);
+		printf("dst2: %s\n", dst2);
+		ft_strlcat(dst2, src2, 20);
+		printf("dst2: %s\n", dst2);
+		ret2 = ft_strlcat(dst2, src2, 20);
+		printf("dst2: %s\n", dst2);
+		printf("ret2: %d\n\n", ret2);
+
+		char dest3[100];
+		dest3[0] = '\0';
+		dest3[11] = 'a';
+		printf("return of ft_strlcat: %lu\n", ft_strlcat(dest3, "lorem ipsum", 15));
+		write(1, "\n", 1);
+		write(1, dest, 15);
+	Expected (cat -e test03.output):
+	11$
+	lorem ipsum^@^@^@^@
+	Your result (cat -e user_output_test03):
+	11$
+	lorem ipsum^@^@^@^@dst_len in ft_strlcat: 0$
+	src_len in ft_strlcat: 11$
+
+
+		
 		t_list	*my_node1;
 		t_list	*my_node2;
 		t_list	**my_list;
@@ -75,7 +148,7 @@ int	main(int argc, char **argv)
 		printf("*my_list->content: %d\n", *(int *)(*my_list)->content);
 		printf("ft_lstsize: %d\n", ft_lstsize(*my_list));
 		printf("ft_lstlast.content: %d\n", *(int *)ft_lstlast(*my_list)->content);
-		/*
+		
 		char const str = "abcdef";
 
 		printf("ft_strmapi: %s\n", ft_strmapi(str, ft_rotx, 1, ))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
+/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/10 16:04:26 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/13 12:46:58 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	llen = ft_strlen(little);
 	if (!llen)
 		return ((char *)big);
-	while (len >= llen && *big)
+	while (*big && len >= llen)
 	{
-		if (ft_memcmp(little, big, llen) == 0)
+		if (ft_strncmp(little, big, llen) == 0)
 			return ((char *)big);
 		len--;
 		big++;

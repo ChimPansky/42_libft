@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
+/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/11 11:46:25 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/13 13:23:03 by chimpansky       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_itoa(int n)
 	len = ft_get_int_order(n);
 	if (nb < 0)
 		neg = 1;
-	str = ft_calloc(sizeof(char), len + neg);
+	str = ft_calloc(sizeof(char), len + neg + 1);
 	if (!str)
 		return (NULL);
 	if (neg)
@@ -32,6 +32,7 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 		nb *= -1;
 	}
+	str[len + neg + 1] = '\0';
 	while (len--)
 	{
 		str[len + neg] = '0' + (nb % 10);
