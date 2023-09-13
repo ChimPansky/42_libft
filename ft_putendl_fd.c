@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/12 13:54:04 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/11 20:40:05 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
 
-t_list	*ft_lstnew(void *content)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_list	*new_list;
-
-	new_list = (t_list *)ft_calloc(sizeof(t_list*), 1);
-	if (!new_list)
-		return (NULL);
-	new_list->content = content;
-	new_list->next = NULL;
-
-	return (new_list);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

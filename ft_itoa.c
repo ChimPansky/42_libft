@@ -3,49 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/09 21:24:41 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/11 11:46:25 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_get_int_order(int nb)
-{
-	size_t	ord;
-
-	ord = 1;
-	while (nb / 10 != 0)
-	{
-		ord++;
-		nb /= 10;
-	}
-	return (ord);
-}
-char *ft_itoa(int n);
+char	*ft_itoa(int n)
 {
 	char	*str;
+	int		neg;
 	size_t	len;
+	long	nb;
 
+	neg = 0;
+	nb = (long)n;
 	len = ft_get_int_order(n);
-	if (n < 0)
-		len++;
-	str = ft_calloc(sizeof(char), len);
-	
-
-
-	str = (char *)s;
-	len = ft_strlen(str);
-	str += len;
-	if (*str == c)
-		return (str);
+	if (nb < 0)
+		neg = 1;
+	str = ft_calloc(sizeof(char), len + neg);
+	if (!str)
+		return (NULL);
+	if (neg)
+	{
+		str[0] = '-';
+		nb *= -1;
+	}
 	while (len--)
 	{
-		str--;
-		if (*str == c)
-			return (str);
+		str[len + neg] = '0' + (nb % 10);
+		nb /= 10;
 	}
-	return (NULL);
+	return (str);
 }

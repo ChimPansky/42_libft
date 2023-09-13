@@ -6,38 +6,86 @@
 #include <stddef.h>
 #include <bsd/string.h>
 
+char	ft_rotx(unsigned int x, char c)
+{
+	return (c + x);
+}
+
+int	addition(int a, int b)
+{
+	return (a + b);
+}
+int subtraction(int a, int b)
+{
+	return (a - b);
+}
+
+int calculate(int (*operation)(int, int), int x, int y)
+{
+	return (operation(x, y));
+}
+
+char	*strfunc(char *(*funcname)(char *, const char *, size_t), char *s1, const char *s2, size_t size)
+{
+	return (funcname(s1, s2, size));
+}
 
 int	main(int argc, char **argv)
 {
-	if (argc > 1)
+	printf("begin testing\n");
+	if (argc == 3)
 	{
-		//printf("strlen: %lu\n",strlen(argv[1]));
-		//printf("ft_strlen: %lu\n",ft_strlen(argv[1]));
+		char **my_split;
+		int	i;
+
+		my_split = ft_split(argv[1], *argv[2]);
+		if (my_split)
+		{
+			printf("sizeof(ft_split(%s, %c)): %ld\n", argv[1], *argv[2], sizeof(my_split));
+			i = -1;
+			while(my_split[++i])
+			{
+				printf("my_split[%d]: %s\n", i, my_split[i]);
+				free(my_split[i]);
+			}
+			free(my_split);
+		}
+		//printf("ft_count_words(%s, %s): %d\n", argv[1], argv[2], ft_count_words(argv[1], argv[2]));
+		//printf("ft_in_str(%s, %c): %d\n", argv[1], argv[2][0], ft_in_str(argv[1], argv[2][0]));
 	}
 	else
 	{
 		(void)argv;
 
-		printf("begin testing\n");
-		
-		char *str = "the cake is a lie !I'm hidden lol\r\n";
+		t_list	*my_node1;
+		t_list	*my_node2;
+		t_list	**my_list;
 
-		char buff1[50] = "there is no stars in the sky";
-//		char buff2[50] = "there is no stars in the sky";
-		size_t max = strlen("the cake is a lie !I'm hidden lol\r\n") + 4;
+		int	a = 5;
+		int	b = 6;
+		my_node1 = ft_lstnew(&a);
+		my_node2 = ft_lstnew(&b);
+		my_list = malloc(sizeof(t_list **)*10);
+		*my_list = my_node1;
 
-		strlcat(buff1, str, max);
-//		ft_strlcat(buff2, str, max);
+		printf("my_node1->content: %d\n", *(int *)my_node1->content);
+		printf("*my_list->content: %d\n", *(int *)(*my_list)->content);
+		ft_lstadd_front(my_list, my_node2);
+		*my_list = my_node2;
+		printf("*my_list->content: %d\n", *(int *)(*my_list)->content);
+		printf("ft_lstsize: %d\n", ft_lstsize(*my_list));
+		printf("ft_lstlast.content: %d\n", *(int *)ft_lstlast(*my_list)->content);
+		/*
+		char const str = "abcdef";
 
-		printf("buff1: %s\n", buff1);
-//		printf("buff2: %s\n", buff2);
-/*
-		printf("ft_strrchr: %s\n", ft_strrchr(" ", '\0'));
-		printf("strrchr   : %s\n", strrchr(" ", '\0'));
-		
-		printf("ft_strtrim: %s\n", ft_strtrim("xXXaaa","xXa"));
-		
+		printf("ft_strmapi: %s\n", ft_strmapi(str, ft_rotx, 1, ))
+		printf("calc: %d\n", calculate(subtraction, 5, 7));
+		char	buff1[20];
+		printf("strfunc: \n", );
+		strfunc(ft_strlcpy, buff1, "abcdefghij", 5);
+
 		//const char *teststr;
+
 		printf("ft_strrchr: %s\n", ft_strrchr("XxXxxaXbcxxxxxaaaa", 'x'));
 		printf("ft_strtrim: %s\n", ft_strtrim("XxXxxaXbcxxxxxx", "cdfxa"));
 		printf("ft_strjoin: %s\n", ft_strjoin("daklfn", " X"));
