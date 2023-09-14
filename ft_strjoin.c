@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/13 13:09:24 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/14 10:59:48 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chimpansky <chimpansky@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/09 18:08:36 by chimpansky       ###   ########.fr       */
+/*   Updated: 2023/09/14 11:02:54 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

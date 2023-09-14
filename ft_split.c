@@ -6,19 +6,16 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/11 16:46:25 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/14 10:57:52 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#include <stdio.h>
-
 char	**ft_split(char const *s, char c);
 int		ft_create_words(char **res, char *str, int wordc, char sep);
 char	**ft_free_result(char **res, int count);
 size_t	ft_count_words(char *str, char sep);
-
 
 size_t	ft_count_words(char *str, char sep)
 {
@@ -87,6 +84,8 @@ char	**ft_split(char const *s, char c)
 	size_t	wordc;
 	char	**result;
 
+	if (!s)
+		return (NULL);
 	str = (char *) s;
 	wordc = ft_count_words(str, c);
 	result = (char **)ft_calloc(sizeof(char *), wordc + 1);
@@ -97,34 +96,3 @@ char	**ft_split(char const *s, char c)
 	result[wordc] = NULL;
 	return (result);
 }
-/*
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		char **my_split;
-		int	i;
-
-		my_split = ft_split(argv[1], *argv[2]);
-		if (my_split)
-		{
-			printf("sizeof(ft_split(%s, %c)): %ld\n", argv[1], *argv[2], sizeof(my_split));
-			i = -1;
-			while(my_split[++i])
-			{
-				printf("my_split[%d]: %s\n", i, my_split[i]);
-				free(my_split[i]);
-			}
-			free(my_split);
-		}
-		//printf("ft_count_words(%s, %s): %d\n", argv[1], argv[2], ft_count_words(argv[1], argv[2]));
-		//printf("ft_in_str(%s, %c): %d\n", argv[1], argv[2][0], ft_in_str(argv[1], argv[2][0]));
-	}
-	else
-	{
-		printf("Please enter arguments for ft_split(const char *str, char c):\n");
-	}
-	return (0);
-}
-*/

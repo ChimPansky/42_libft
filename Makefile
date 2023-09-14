@@ -14,7 +14,8 @@ SRC = \
 OBJ = $(SRC:.c=.o)
 
 SRC_BONUS = \
-	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c 
+	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+	ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
@@ -30,9 +31,12 @@ all: $(NAME)
 
 # remove the next target before evaluations...
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(SRC_BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_BONUS)
 
+so:
+	$(CC) -fPIC $(CFLAGS) $(SRC) $(SRC_BONUS)
+	gcc -shared -o libft.so $(OBJ) $(OBJ_BONUS)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@

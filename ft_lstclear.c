@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/14 09:58:45 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/14 15:47:54 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	llen;
+	t_list	*current;
+	t_list	*next;
 
-	if (!len && !big)
-		return (NULL);
-	llen = ft_strlen(little);
-	if (!llen)
-		return ((char *)big);
-	while (*big && len >= llen)
+	if (!lst)
+		return ;
+	current = *lst;
+	while (current)
 	{
-		if (ft_strncmp(little, big, llen) == 0)
-			return ((char *)big);
-		len--;
-		big++;
+		next = current->next;
+		ft_lstdelone(current, del);
+		current = next;
 	}
-	return (NULL);
+	*lst = NULL;
 }

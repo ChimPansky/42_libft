@@ -5,10 +5,33 @@
 #include <string.h>
 #include <stddef.h>
 #include <bsd/string.h>
+#include <fcntl.h>
+
+
+void	*ft_content_increase(void *ptr)
+{
+	void	*mycontent;
+
+	mycontent = ft_calloc(sizeof(int), 1);
+	if (!mycontent)
+		return (NULL);
+	*(int*)mycontent = *((int*)ptr) + 10;
+	return (mycontent);
+}
+
+void	ft_lst_increase(void *ptr)
+{
+	*(int*)ptr += 1;
+}
 
 char	ft_rotx(unsigned int x, char c)
 {
 	return (c + x);
+}
+
+void	ft_free(void *ptr)
+{
+	free(ptr);
 }
 
 int	addition(int a, int b)
@@ -30,33 +53,12 @@ char	*strfunc(char *(*funcname)(char *, const char *, size_t), char *s1, const c
 	return (funcname(s1, s2, size));
 }
 
-void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
-{
-	char *const			dest = dst;
-	const char *const	source = src;
-	size_t				start;
-
-	start = 0;
-	while (start < n)
-	{
-		*(dest + start) = *(source + start);
-		if (*(dest + start) == c)
-		{
-			start = n;
-		}
-		else
-		{
-			start++;
-		}
-	}
-	return (dst);
-}
-
 int	main(int argc, char **argv)
 {
 	printf("begin testing\n");
 	if (argc == 3)
 	{
+		/*
 		char **my_split;
 		int	i;
 
@@ -74,35 +76,58 @@ int	main(int argc, char **argv)
 		}
 		//printf("ft_count_words(%s, %s): %d\n", argv[1], argv[2], ft_count_words(argv[1], argv[2]));
 		//printf("ft_in_str(%s, %c): %d\n", argv[1], argv[2][0], ft_in_str(argv[1], argv[2][0]));
+		*/
 	}
 	else
 	{
 		(void)argv;
 
-		char	buff1[20];
-		char	buff2[20];
-		char	*src = "abcdef";
+		//char mysrc[0xF] = "nyan !";
+		//printf("ft_strlen(mysrc): %lu\n", ft_strlen((void*)0));
 
-		printf("memcpy   : %s\n", (char *)(memccpy((void*)buff1, src, '\0', 10)));
-		printf("ft_memcpy: %s\n", (char *)(ft_memccpy((void*)buff2, src, '\0', 10)));
-		printf("buff1: %s\n", buff1);
-		printf("buff2: %s\n", buff2);
+		//printf("ft_strlcat result: %lu\n", ft_strlcat(((void*)0), mysrc, 1));
 
+		//printf("ft_strnstr() result: %s\n", strnstr(((void*)0), "fake", 0));
+/*
+		char	*dest1;
+		char	*dest2;
+
+		dest1 = (char *)malloc(sizeof(*dest1) * 15);
+		dest2 = (char *)malloc(sizeof(*dest2) * 15);
+
+		memset(dest1, 0, 15);
+		memset(dest1, 'r', 6);
+
+		memset(dest2, 0, 15);
+		memset(dest2, 'r', 6);
+
+		dest1[11] = 'a';
+		dest2[11] = 'a';
+
+		printf("result of ft_strlcat: %lu\n", ft_strlcat(dest1, "lorem", 15));
+		printf("dest1: %s\n", dest1);
+		printf("result of strlcat   : %lu\n", strlcat(dest2, "lorem", 15));
+		printf("dest2: %s\n", dest2);
+*/
 
 		int	a = 1;
 		int	b = 2;
 		int	c = 3;
 		char	*d = "abc";
+		int	e = 5;
 
 		t_list	*node1;
 		t_list	*node2;
 		t_list	*node3;
 		t_list	*node4;
+		t_list	*node5;
+
 
 		node1 = ft_lstnew((void*)&a);
 		node2 = ft_lstnew((void*)&b);
 		node3 = ft_lstnew((void*)&c);
 		node4 = ft_lstnew((void*)&d);
+		node5 = ft_lstnew((void*)&e);
 		node1->next = node2;
 		node2->next = node3;
 
@@ -110,6 +135,7 @@ int	main(int argc, char **argv)
 		t_list	*new_list = NULL;
 		//t_list	**new_list = malloc(sizeof(t_list **));
 		ft_lstadd_front(&new_list, node1);
+
 
 		printf("new_list->content: %d\n", *(int *)(new_list->content));
 		printf("new_list->next->content: %d\n", *(int *)(new_list->next->content));
@@ -119,15 +145,42 @@ int	main(int argc, char **argv)
 		t_list	*lastnode;
 		lastnode = ft_lstlast(new_list);
 		printf("lastnode->content: %p\n", &lastnode->content);
-		ft_lstadd_back(&new_list, node4);
+		ft_lstadd_back(&new_list, node5);
 		printf("ft_lstsize: %d\n", ft_lstsize(new_list));
-		printf("lastnode->content: %p\n", &(ft_lstlast(new_list)->content));
-		
-		/*
+		printf("lastnode->content: %i\n", *(int*)(ft_lstlast(new_list)->content));
+
+		//ft_lstiter(new_list, ft_lst_increase);
+		t_list *newnew_list;
+		newnew_list = ft_lstmap(new_list, ft_content_increase, ft_free);
+		printf("newnew_list->content: %d\n", *(int *)(newnew_list->content));
+		printf("newnew_list->next->content: %d\n", *(int *)(newnew_list->next->content));
+		printf("newnew_list->next->next->content: %d\n", *(int *)(newnew_list->next->next->content));
+/*
+		lastnode = ft_lstlast(new_list);
+		printf("lastnode->content: %p\n", lastnode->content);
+
+		ft_lstclear(&new_list, ft_free);
+
+		//ft_lstdelone(lastnode, &ft_free);
+		printf("lastnode->content: %p\n", lastnode->content);
+
+
+
+
+			int	file;
+		char	*path = "~/temp/textfile2";
+
+		file = open(path, O_RDWR);
+
+		printf("file: %d\n", file);
+		ft_putchar_fd('X', file);
+		return (0);
+
+
 		printf("ft_itoa: %s\n", ft_itoa(5));
 		printf("ft_itoa: %s\n", ft_itoa(-623));
 		printf("ft_strncmp: %d\n", ft_strncmp(ft_itoa(-623), "-623", 10));
-		
+
 		printf("strnstr with void: %s\n",strnstr((void *)0, "fake", 3));
 		printf("ft_strnstr with void: %s\n",ft_strnstr((void *)0, "fake", 3));
 		const char	*str1 = "";
@@ -141,20 +194,20 @@ int	main(int argc, char **argv)
 		printf("ft_strjoin: %s\n", ft_strjoin((const char *)buff1, (const char *)buff2));
 		printf("tmp: %s\n", tmp);
 		printf("res: %s\n", res);
-		
+
 		char	*src = "the cake is a lie !\0I'm hidden lol\r\n";
 		char	dest[200];
 		char	ft_dest[200];
 		printf("strlen ft_dest: %lu\n", strlen(ft_dest));
 		printf("ft_strlen ft_dest: %lu\n", ft_strlen(ft_dest));
-		
+
 		size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
 		printf("max: %lu\n", max);
 		printf("return of strlcat: %lu\n", strlcat(dest, src, max));
 		printf("dest    : %s\n\n", dest);
 		printf("return of ft_strlcat: %lu\n", ft_strlcat(ft_dest, src, max));
 		printf("ft_ dest: %s\n\n", ft_dest);
-		
+
 		printf("\n\n");
 
 		char *src2 = "aaa";
@@ -196,7 +249,7 @@ int	main(int argc, char **argv)
 	src_len in ft_strlcat: 11$
 
 
-		
+
 		t_list	*my_node1;
 		t_list	*my_node2;
 		t_list	**my_list;
@@ -215,7 +268,7 @@ int	main(int argc, char **argv)
 		printf("*my_list->content: %d\n", *(int *)(*my_list)->content);
 		printf("ft_lstsize: %d\n", ft_lstsize(*my_list));
 		printf("ft_lstlast.content: %d\n", *(int *)ft_lstlast(*my_list)->content);
-		
+
 		char const str = "abcdef";
 
 		printf("ft_strmapi: %s\n", ft_strmapi(str, ft_rotx, 1, ))
