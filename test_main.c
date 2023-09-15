@@ -131,57 +131,45 @@ int	main(int argc, char **argv)
 		int	a = 1;
 		int	b = 2;
 		int	c = 3;
-		char	*d = "abc";
-		int	e = 5;
+		int	d = 4;
+		//int	e = 5;
 
 		t_list	*node1;
 		t_list	*node2;
 		t_list	*node3;
 		t_list	*node4;
-		t_list	*node5;
+		//t_list	*node5;
 
 
 		node1 = ft_lstnew((void*)&a);
 		node2 = ft_lstnew((void*)&b);
 		node3 = ft_lstnew((void*)&c);
 		node4 = ft_lstnew((void*)&d);
-		node5 = ft_lstnew((void*)&e);
 		node1->next = node2;
 		node2->next = node3;
 
 
 		t_list	*new_list = NULL;
-		//t_list	**new_list = malloc(sizeof(t_list **));
-		ft_lstadd_front(&new_list, node1);
 
-		printf("ft_itoa: %s\n", ft_itoa(-2147483648));
-
-		printf("new_list->content: %d\n", *(int *)(new_list->content));
-		printf("new_list->next->content: %d\n", *(int *)(new_list->next->content));
-		printf("new_list->next->next->content: %d\n", *(int *)(new_list->next->next->content));
-
+		ft_lstadd_front(&new_list, node4);
+		ft_lstadd_back(&new_list, node1);
 		printf("ft_lstsize: %d\n", ft_lstsize(new_list));
-		t_list	*lastnode;
-		lastnode = ft_lstlast(new_list);
-		printf("lastnode->content: %p\n", &lastnode->content);
-		ft_lstadd_back(&new_list, node5);
-		printf("ft_lstsize: %d\n", ft_lstsize(new_list));
-		printf("lastnode->content: %i\n", *(int*)(ft_lstlast(new_list)->content));
 
-		//ft_lstiter(new_list, ft_lst_increase);
+
 		t_list *newnew_list;
 		newnew_list = ft_lstmap(new_list, ft_content_increase, ft_free);
 		printf("newnew_list->content: %d\n", *(int *)(newnew_list->content));
 		printf("newnew_list->next->content: %d\n", *(int *)(newnew_list->next->content));
 		printf("newnew_list->next->next->content: %d\n", *(int *)(newnew_list->next->next->content));
 
-		lastnode = ft_lstlast(new_list);
-		printf("lastnode->content: %p\n", lastnode->content);
+		//lastnode = ft_lstlast(new_list);
+		//printf("lastnode->content: %p\n", lastnode->content);
 
+		ft_lstclear(&new_list, NULL);
 		ft_lstclear(&newnew_list, ft_free);
 
 		//ft_lstdelone(lastnode, &ft_free);
-		printf("lastnode->content: %p\n", lastnode->content);
+		//printf("lastnode->content: %p\n", lastnode->content);
 /*
 
 
