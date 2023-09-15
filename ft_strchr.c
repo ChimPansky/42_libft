@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/15 12:28:16 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:06:44 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 char	*ft_strchr(const char *s, int c)
 {
 	char				*str;
-	const unsigned char	myc = (const unsigned char) c;
+	const unsigned char	my_c = (const unsigned char) c;
 
 	str = (char *)s;
 	while (*str)
 	{
-		if (*str == myc)
+		if (*str == my_c)
 			return (str);
 		str++;
 	}
-	if (!myc)
+	if (!my_c)
 		return (str);
 	return (NULL);
 }
