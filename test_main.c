@@ -82,6 +82,14 @@ int	main(int argc, char **argv)
 	{
 		(void)argv;
 
+		//printf("ft_substr: %s\n", ft_substr("hola", 1, 5));
+		//printf("ft_strtrim: %s\n", ft_strtrim("alndfjn", "abx"));
+		//printf("ft_strchr: %s\n", ft_strchr("teste", 'e'));
+
+		char buff1[10] = "teste";
+		//printf("ft_strrchr: %s\n", ft_strrchr(buff1, 'e'));
+		printf("address of buff1: %p\n", &buff1);
+		printf("ft_memchr: %p\n", ft_memchr(&buff1, 't', 20));
 		//char mysrc[0xF] = "nyan !";
 		//printf("ft_strlen(mysrc): %lu\n", ft_strlen((void*)0));
 
@@ -108,7 +116,7 @@ int	main(int argc, char **argv)
 		printf("dest1: %s\n", dest1);
 		printf("result of strlcat   : %lu\n", strlcat(dest2, "lorem", 15));
 		printf("dest2: %s\n", dest2);
-*/
+
 
 		int	a = 1;
 		int	b = 2;
@@ -155,7 +163,7 @@ int	main(int argc, char **argv)
 		printf("newnew_list->content: %d\n", *(int *)(newnew_list->content));
 		printf("newnew_list->next->content: %d\n", *(int *)(newnew_list->next->content));
 		printf("newnew_list->next->next->content: %d\n", *(int *)(newnew_list->next->next->content));
-/*
+
 		lastnode = ft_lstlast(new_list);
 		printf("lastnode->content: %p\n", lastnode->content);
 

@@ -30,13 +30,9 @@ bonus: $(OBJ) $(OBJ_BONUS) $(HEADER)
 all: $(NAME)
 
 # remove the next target before evaluations...
-so:
+so: $(OBJ) $(OBJ_BONUS) $(HEADER)
 	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(SRC_BONUS)
 	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_BONUS)
-
-so:
-	$(CC) -fPIC $(CFLAGS) $(SRC) $(SRC_BONUS)
-	gcc -shared -o libft.so $(OBJ) $(OBJ_BONUS)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
