@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/14 12:13:35 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:23:06 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		ft_tolower(int c);
 
 int		ft_isspace(char c); // helper function
 size_t	ft_strlen(const char	*s);	// helper function
-size_t	ft_get_int_order(int nb);	// helper function
 
 void	*ft_memset(void	*s, int c, size_t n);
 

@@ -31,6 +31,7 @@ char	ft_rotx(unsigned int x, char c)
 
 void	ft_free(void *ptr)
 {
+	//printf("ft_free without freeing... %p\n", ptr);
 	free(ptr);
 }
 
@@ -81,22 +82,31 @@ int	main(int argc, char **argv)
 	else
 	{
 		(void)argv;
-
+/*
 		//printf("ft_substr: %s\n", ft_substr("hola", 1, 5));
 		//printf("ft_strtrim: %s\n", ft_strtrim("alndfjn", "abx"));
 		//printf("ft_strchr: %s\n", ft_strchr("teste", 'e'));
 
-		char buff1[10] = "teste";
+//		char buff1[10] = "teste";
 		//printf("ft_strrchr: %s\n", ft_strrchr(buff1, 'e'));
-		printf("address of buff1: %p\n", &buff1);
-		printf("ft_memchr: %p\n", ft_memchr(&buff1, 't', 20));
+		//printf("ft_strncmp: %i\n", ft_strncmp("test", "testss", 7));
+		//printf("strncmp: %i\n", strncmp("test", "testss", 7));
+
+		//printf("ft_strncmp: %i\n", ft_strncmp("", "test", 4));
+		//printf("strncmp: %i\n", strncmp("", "test", 4));
+		char *res = ft_itoa(-9);
+		printf("ft_itoa: %s\n", res);
+		free(res);
+
+		//printf("address of buff1: %p\n", &buff1);
+		//printf("ft_memchr: %p\n", ft_memchr(&buff1, 't', 20));
 		//char mysrc[0xF] = "nyan !";
 		//printf("ft_strlen(mysrc): %lu\n", ft_strlen((void*)0));
 
 		//printf("ft_strlcat result: %lu\n", ft_strlcat(((void*)0), mysrc, 1));
 
 		//printf("ft_strnstr() result: %s\n", strnstr(((void*)0), "fake", 0));
-/*
+
 		char	*dest1;
 		char	*dest2;
 
@@ -117,7 +127,7 @@ int	main(int argc, char **argv)
 		printf("result of strlcat   : %lu\n", strlcat(dest2, "lorem", 15));
 		printf("dest2: %s\n", dest2);
 
-
+*/
 		int	a = 1;
 		int	b = 2;
 		int	c = 3;
@@ -144,6 +154,7 @@ int	main(int argc, char **argv)
 		//t_list	**new_list = malloc(sizeof(t_list **));
 		ft_lstadd_front(&new_list, node1);
 
+		printf("ft_itoa: %s\n", ft_itoa(-2147483648));
 
 		printf("new_list->content: %d\n", *(int *)(new_list->content));
 		printf("new_list->next->content: %d\n", *(int *)(new_list->next->content));
@@ -167,11 +178,11 @@ int	main(int argc, char **argv)
 		lastnode = ft_lstlast(new_list);
 		printf("lastnode->content: %p\n", lastnode->content);
 
-		ft_lstclear(&new_list, ft_free);
+		ft_lstclear(&newnew_list, ft_free);
 
 		//ft_lstdelone(lastnode, &ft_free);
 		printf("lastnode->content: %p\n", lastnode->content);
-
+/*
 
 
 

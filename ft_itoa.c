@@ -6,11 +6,24 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/14 10:49:31 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:24:44 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static size_t	ft_get_int_order(int nb)
+{
+	size_t	ord;
+
+	ord = 1;
+	while (nb / 10 != 0)
+	{
+		ord++;
+		nb /= 10;
+	}
+	return (ord);
+}
 
 char	*ft_itoa(int n)
 {
@@ -32,7 +45,7 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 		nb *= -1;
 	}
-	str[len + neg + 1] = '\0';
+	str[len + neg] = '\0';
 	while (len--)
 	{
 		str[len + neg] = '0' + (nb % 10);
