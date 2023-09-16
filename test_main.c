@@ -82,11 +82,11 @@ int	main(int argc, char **argv)
 	else
 	{
 		(void)argv;
-/*
-		//printf("ft_substr: %s\n", ft_substr("hola", 1, 5));
-		//printf("ft_strtrim: %s\n", ft_strtrim("alndfjn", "abx"));
-		//printf("ft_strchr: %s\n", ft_strchr("teste", 'e'));
 
+		printf("ft_substr(\"hola\", 1, 5)): %s\n", ft_substr("hola", 1, 5));
+		printf("ft_strtrim: %s\n", ft_strtrim("alndfjn", "abx"));
+		//printf("ft_strchr: %s\n", ft_strchr("teste", 'e'));
+/*
 //		char buff1[10] = "teste";
 		//printf("ft_strrchr: %s\n", ft_strrchr(buff1, 'e'));
 		//printf("ft_strncmp: %i\n", ft_strncmp("test", "testss", 7));
@@ -127,7 +127,7 @@ int	main(int argc, char **argv)
 		printf("result of strlcat   : %lu\n", strlcat(dest2, "lorem", 15));
 		printf("dest2: %s\n", dest2);
 
-*/
+
 		int	a = 1;
 		int	b = 2;
 		int	c = 3;
@@ -170,7 +170,7 @@ int	main(int argc, char **argv)
 
 		//ft_lstdelone(lastnode, &ft_free);
 		//printf("lastnode->content: %p\n", lastnode->content);
-/*
+
 
 
 
