@@ -6,13 +6,13 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/16 12:50:25 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/09/16 13:03:57 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		**ft_split(char const *s, char c);
+char			**ft_split(char const *s, char c);
 static int		ft_create_words(char **res, char *str, int wordc, char sep);
 static char		**ft_free_result(char **res, int count);
 static size_t	ft_count_words(char *str, char sep);

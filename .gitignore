@@ -9,4 +9,5 @@
 *.so
 *.a
 *.md
+test_main.c
 Makefile_copy
