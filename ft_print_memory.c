@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:43:25 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/10/24 15:11:50 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:14:24 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	print_substr(char *s, size_t offset, size_t len)
 			printf(".");
 		i++;
 	}
+	printf("\n");
 }
 
 void	print_spaces(size_t nbytes)
@@ -51,23 +52,16 @@ void	*ft_print_memory_width(void *addr, unsigned int size, unsigned int width)
 	while (i < size)
 	{
 		if (i % width == 0)
-			printf("%p", (addr + i));
-			//printf("%.16lx: ", (size_t)(addr + i));
+			printf("%p", (addr + i));	//printf("%.16lx: ", (size_t)(addr + i));
 		printf("%02x" , *((char *)addr + i));
 		if (i % 2 == 1 || i % width == width - 1)
 			printf(" ");
 		if (i % width != width - 1 && i == size - 1)
-		{
 			print_spaces((width - 1) - (i % width));
-		}
 		if (i % width == width - 1 || i == size - 1)
-		{
 			print_substr((char *)addr, i - (i % width), i % width + 1);
-			printf("\n");
-		}
 		i++;
 	}
-
 	return (addr);
 }
 
