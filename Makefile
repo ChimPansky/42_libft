@@ -22,10 +22,10 @@ OBJ_BONUS = $(SRC_BONUS:.c=.o)
 $(NAME): $(OBJ) $(HEADER)
 	ar -rs $(NAME) $(OBJ)
 
-all: $(NAME)
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-#%.o : %.c $(HEADER)
-#	$(CC) $(CFLAGS) -c $< -o $@
+all: $(NAME)
 
 bonus: $(OBJ) $(OBJ_BONUS)
 	ar -rs $(NAME) $(OBJ) $(OBJ_BONUS)
@@ -37,5 +37,10 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+# for libft-unit-tester:
+so: $(OBJ) $(OBJ_BONUS) $(HEADER)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(SRC_BONUS)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(OBJ_BONUS)
 
 .PHONY: all clean fclean re test bonus so
