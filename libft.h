@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/10/24 14:08:59 by tkasbari         ###   ########.fr       */
+/*   Updated: 2023/10/25 21:06:16 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 // Further additions:
 void	*ft_print_memory(void *addr, unsigned int size);
 void	*ft_print_memory_width(void *addr, unsigned int size, unsigned int width);
+int	ft_str_isnum(char *c);
 
 #endif
