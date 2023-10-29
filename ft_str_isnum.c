@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_str_isnum.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/24 11:58:57 by tkasbari         ###   ########.fr       */
+/*   Created: 2023/10/25 20:57:40 by tkasbari          #+#    #+#             */
+/*   Updated: 2023/10/28 16:54:42 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+int	ft_str_isnum(char *c)
 {
-	return (c >= 0 && c <= 127);
+	int	isnum;
+
+	isnum = 0;
+	if (*c == '-' || *c == '+')
+		c++;
+	while (*c)
+	{
+		if (ft_isdigit(*c))
+			isnum = 1;
+		else
+			return (0);
+		c++;
+	}
+	return (isnum);
 }

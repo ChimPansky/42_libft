@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_strreplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/24 11:58:57 by tkasbari         ###   ########.fr       */
+/*   Created: 2023/10/03 10:12:10 by tkasbari          #+#    #+#             */
+/*   Updated: 2023/10/05 11:28:59 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+/* Create a String consisting of Length len only containing Character c */
+char	*ft_strreplicate(char c, size_t len)
 {
-	return (c >= 0 && c <= 127);
+	char	*result;
+
+	result = malloc(sizeof(char) * (len + 1));
+	if (!result)
+		return (NULL);
+	result[len] = '\0';
+	if (len)
+	{
+		while (len--)
+			result[len] = c;
+	}
+	return (result);
 }
