@@ -1,7 +1,9 @@
 NAME = libft.a
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
-INCLUDE_DIR = ../include/
+CFLAGS = -Wall -Werror -Wextra #-Wpedantic
+ CFLAGS += -g -Og #-fsanitize=address,undefined,leak
+CFLAGS += -g 
+INCLUDE_DIR = ./
 HEADER = $(INCLUDE_DIR)libft.h
 
 #Colors
