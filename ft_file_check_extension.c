@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_file_check_extension.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/24 11:58:57 by tkasbari         ###   ########.fr       */
+/*   Created: 2023/11/15 21:07:02 by tkasbari          #+#    #+#             */
+/*   Updated: 2023/11/27 15:54:39 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+int	ft_file_check_extension(char *file_path, char *ext)
 {
-	return (c >= 0 && c <= 127);
+	char	*file_extension;
+	int		comparison;
+
+	file_extension = ft_file_get_extension(file_path);
+	if (!file_extension)
+		return (1);
+	comparison = ft_strncmp(file_extension, ext,
+			ft_max(ft_strlen(file_extension), ft_strlen(ext)));
+	free(file_extension);
+	return (comparison);
 }

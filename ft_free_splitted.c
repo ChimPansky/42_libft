@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_free_splitted.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/09/24 11:58:57 by tkasbari         ###   ########.fr       */
+/*   Created: 2023/11/23 12:53:43 by tkasbari          #+#    #+#             */
+/*   Updated: 2023/11/23 12:57:10 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+void	ft_free_splitted(char **splitted)
 {
-	return (c >= 0 && c <= 127);
+	char	**to_free;
+
+	if (!splitted)
+		return ;
+	to_free = splitted;
+	while (*splitted)
+	{
+		free(*splitted);
+		splitted++;
+	}
+	ft_free_and_null((void **)&to_free);
 }
