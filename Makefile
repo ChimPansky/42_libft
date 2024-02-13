@@ -1,21 +1,12 @@
+include colors.mk
+
 NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra #-Wpedantic
  CFLAGS += -g -Og #-fsanitize=address,undefined,leak
-CFLAGS += -g 
+CFLAGS += -g
 INCLUDE_DIR = ./
 HEADER = $(INCLUDE_DIR)libft.h
-
-#Colors
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
 
 SRC_FILES = ft_atoi ft_bzero ft_calloc ft_isalnum ft_isalpha ft_isascii \
 	ft_isdigit ft_isprint ft_isspace ft_itoa ft_memchr ft_memcmp \
