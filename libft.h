@@ -6,12 +6,14 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/12/04 10:21:10 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/04 09:07:15 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+// this is used in cub3d
 
 # include <unistd.h>
 # include <stdlib.h>
