@@ -6,14 +6,13 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2024/03/04 09:04:03 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/04 09:07:53 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-// this libft is used as submodule in cub3d
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
