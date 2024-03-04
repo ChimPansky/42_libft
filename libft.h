@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/12/04 10:21:10 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/04 19:53:04 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include <limits.h>
 # include <errno.h>
 # include <stdbool.h>
+# include <sys/types.h>
+
+# ifndef SUCCESS
+#  define SUCCESS 0
+# endif
+
+# ifndef FAILURE
+#  define FAILURE 1
+# endif
 
 // Helper Functions
 int		ft_isspace(char c);
@@ -40,6 +49,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memrchr(const void *s, int c, size_t n);
@@ -106,6 +116,7 @@ char	*ft_substr_free(char *s, unsigned int start, size_t len, int to_free);
 int		ft_iif_int(int condition, int true_val, int false_val);
 void	*ft_iif_ptr(int condition, void *true_val, void *false_val);
 void	*ft_iif_ptr_f(int cond, char *(*f)(char const *), void *v1, void *v2);
+bool	ft_string_is_empty(char *string);
 
 // Printf Additions (Put into separate header?)
 # define S_FLAGS "#0- +"
@@ -172,5 +183,36 @@ typedef struct s_line
 }				t_line;
 
 t_line	get_next_line(int fd);
+
+// string and charptrarray additions:
+# define T_STRING_INIT_CAPACITY 5
+# define STR_ARR_INIT_CAP 8
+
+typedef struct s_string
+{
+	char	*buf;
+	size_t	len;
+	size_t	capacity;
+}		t_string;
+
+int		string_init(t_string *string, char *str);
+int		string_init_fixed_cap(t_string *string, size_t init_capacity);
+void	string_init_with_allocated(t_string *string, char *allocated);
+int		string_add_str(t_string *string, const char *appendix);
+int		string_add_chr(t_string *string, char appendix);
+void	string_destroy(t_string *string);
+
+typedef struct s_charptr_array
+{
+	char	**buf;
+	size_t	sz;
+	size_t	cap;
+}		t_charptr_array;
+
+int		charptr_array_init(t_charptr_array *arr);
+int		charptr_array_add_allocated_str(t_charptr_array *arr, char **str);
+int		charptr_array_dup_and_add_str(t_charptr_array *arr, const char *str);
+void	charptr_array_destroy(t_charptr_array *arr);
+void	charptr_array_print(t_charptr_array *arr);
 
 #endif
