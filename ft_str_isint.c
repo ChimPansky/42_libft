@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:57:40 by tkasbari          #+#    #+#             */
-/*   Updated: 2024/03/07 10:36:15 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:38:36 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ int	ft_str_isint(char *s, int *target)
 		s++;
 	}
 	*target = result * neg_mult;
-	return (true);
+	return (isnum);
 }
