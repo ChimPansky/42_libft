@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 20:57:40 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/11/05 22:11:47 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:36:15 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	handle_sign(char **s, int *neg_mult)
 
 int	ft_str_isint(char *s, int *target)
 {
-	int		isnum;
+	bool	isnum;
 	int		neg_mult;
 	long	result;
 
 	*target = 0;
 	neg_mult = 1;
 	result = 0;
-	isnum = 0;
+	isnum = false;
 	handle_sign(&s, &neg_mult);
 	while (*s)
 	{
@@ -41,12 +41,12 @@ int	ft_str_isint(char *s, int *target)
 			if ((neg_mult == -1 && (result * neg_mult) < INT_MIN)
 				|| (neg_mult == 1 && result > INT_MAX))
 				return (0);
-			isnum = 1;
+			isnum = true;
 		}
 		else
-			return (0);
+			return (false);
 		s++;
 	}
 	*target = result * neg_mult;
-	return (isnum);
+	return (true);
 }
