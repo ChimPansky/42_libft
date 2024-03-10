@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:13:03 by tkasbari          #+#    #+#             */
-/*   Updated: 2024/03/08 18:37:59 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/09 09:37:35 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static char	*apply_precision(char *s, int prec, char type)
 				&& ft_strlen(result) < (size_t)prec + 1)
 				result = pad_negative(result, '0', prec + 1, 1);
 			else
-				result = ft_strlpad_free(result, '0', prec, 1);
+				result = ft_strlpad(result, '0', prec, true);
 		}
 	}
 	if (!result)
@@ -130,10 +130,10 @@ static char	*apply_min_width(char *s, t_format conf)
 			&& *s == '-' && ft_strlen(result) < conf.width)
 			result = pad_negative(result, '0', conf.width, 1);
 		else
-			result = ft_strlpad_free(result, '0', conf.width, 1);
+			result = ft_strlpad(result, '0', conf.width, true);
 	}
 	else
-		result = ft_strlpad_free(result, ' ', conf.width, 1);
+		result = ft_strlpad(result, ' ', conf.width, true);
 	if (!result)
 		free(to_free);
 	return (result);

@@ -67,7 +67,6 @@ SRC_FILES = ft_atoi \
 	ft_strreplicate \
 	ft_strlpad \
 	ft_strrpad \
-	ft_strlpad_free \
 	ft_str_isnum \
 	ft_str_isint \
 	ft_str_chr_replace \
