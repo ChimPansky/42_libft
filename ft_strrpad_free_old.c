@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:56:52 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/10/04 19:59:17 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:32:00 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*	Right Pad a String <s> with a character <cpad> to reach a certain
 	size <target_size> and afterwards free the original string*/
-char	*ft_strrpad_free(char *s, char cpad, size_t target_size, int to_free)
+char	*ft_strrpad_free_old(char *s, char cpad, size_t target_size, int to_free)
 {
 	char	*result;
 

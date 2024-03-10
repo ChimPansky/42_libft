@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 18:40:07 by tkasbari          #+#    #+#             */
-/*   Updated: 2024/03/04 19:59:53 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/08 18:37:19 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		ft_abs(int x);
 int		ft_max(int a, int b);
 void	ft_free_and_null(void **ptr);
 char	*ft_file_get_extension(char *file_path);
-int		ft_file_check_extension(char *file_path, char *ext);
+bool	ft_file_check_extension(char *file_path, char *ext);
 void	ft_free_splitted(char **splitted);
 
 // Libft Additions for Printf:
@@ -110,9 +110,8 @@ char	*ft_itoa_base_signed(int n, char *base);
 char	*ft_itoa_base_unsigned(size_t n, char *base);
 char	*ft_strreplicate(char c, size_t len);
 char	*ft_strlpad(const char *s, char cpad, size_t target_size);
-char	*ft_strrpad(const char *s, char cpad, size_t target_size);
 char	*ft_strlpad_free(char *s, char cpad, size_t target_size, int to_free);
-char	*ft_strrpad_free(char *s, char cpad, size_t target_size, int to_free);
+char	*ft_strrpad(char *src, char padding, size_t target_size, bool free_src);
 char	*ft_strjoin_free(char *s1, char *s2, bool free_s1, bool free_s2);
 char	*ft_substr_free(char *s, unsigned int start, size_t len, int to_free);
 int		ft_iif_int(int condition, int true_val, int false_val);
