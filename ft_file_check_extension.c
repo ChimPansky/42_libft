@@ -6,22 +6,22 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 21:07:02 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/11/27 15:54:39 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:48:20 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_file_check_extension(char *file_path, char *ext)
+bool	ft_file_check_extension(char *file_path, char *ext_to_check)
 {
-	char	*file_extension;
-	int		comparison;
+	char	*file_ext;
 
-	file_extension = ft_file_get_extension(file_path);
-	if (!file_extension)
-		return (1);
-	comparison = ft_strncmp(file_extension, ext,
-			ft_max(ft_strlen(file_extension), ft_strlen(ext)));
-	free(file_extension);
-	return (comparison);
+	if (!file_path)
+		return (false);
+	file_ext = ft_file_get_extension(file_path);
+	if (!file_ext && !ext_to_check)
+		return (true);
+	if (!file_ext || !ext_to_check)
+		return (false);
+	return (!ft_strcmp(file_ext, ext_to_check));
 }

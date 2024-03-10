@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:13:44 by tkasbari          #+#    #+#             */
-/*   Updated: 2023/12/02 14:03:46 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/03/09 09:39:10 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*pad_negative(char *s, char cpad, size_t width, int to_free)
 
 	result = s;
 	*result = '0';
-	result = ft_strlpad_free(result, cpad, width, to_free);
+	result = ft_strlpad(result, cpad, width, to_free);
 	if (result)
 		*result = '-';
 	return (result);
